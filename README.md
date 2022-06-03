@@ -9,7 +9,7 @@ The library uses the purity data provided by Aran et al., "Systematic pan-cancer
 
 To install and use the library:
 - first install.packages("devtools")
-- then install the package with devtools::install() (provided you are at the project folder)
+- then install the library with devtools::install() (provided you are at the project folder)
 - load the library in your code with library(TCGAPurityFiltering)
 
 An example is provided that explores the functionality of the library.
