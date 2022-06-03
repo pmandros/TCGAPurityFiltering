@@ -4,7 +4,8 @@
 
 library(TCGAPurityFiltering)
 
-# gene_exp_file <- "/Users/panos/git/graph_embed/expression_data/raw_LUAD.txt"
+## read a TCGA assay
+# gene_exp_file <- "...LUAD_gene_expression.txt"
 # gene_expression <- read.csv(file = gene_exp_file, sep="\t", header=TRUE, row.names = 1)
 
 #create object from TCGAPurityFiltering class
