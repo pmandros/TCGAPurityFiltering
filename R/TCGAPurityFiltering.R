@@ -6,16 +6,16 @@ TCGAPurityFiltering=setRefClass("TCGAPurityFiltering",
                stop("Error: Assay needs to be a data.frame")
              }
 
-             if(!(filter_method %in% colnames(obj$TCGA_purities))){
+             if(!(filter_method %in% colnames(.self$TCGA_purities))){
                stop("Error: Purity estimation method not found (misspelled maybe?). Options are ESTIMATE,
                     ABSOLUTE, LUMP, IHC, CPE")
              }
 
-             if(!(cancer_type %in% obj$TCGA_purities$Cancer_type)){
+             if(!(cancer_type %in% .self$TCGA_purities$Cancer_type)){
                stop("Error: TCGA cancer type not found (misspelled maybe?)")
              }
 
-             cancer_type_TCGA_purities <- obj$get_tissue_purities(cancer_type)
+             cancer_type_TCGA_purities <- .self$get_tissue_purities(cancer_type)
 
              #for some reason the tcga tissue names are parsed with . instead of -
              colnames(assay) <- gsub(pattern = "\\.", replacement = "-",colnames(assay))
@@ -38,12 +38,12 @@ TCGAPurityFiltering=setRefClass("TCGAPurityFiltering",
              return(dataframe_to_return)
            },
            get_tissue_purities = function(cancer_type, filter_method=NULL){
-             if(!(cancer_type %in% obj$TCGA_purities$Cancer_type)){
+             if(!(cancer_type %in% .self$TCGA_purities$Cancer_type)){
                stop("Error: TCGA cancer type not found (misspelled maybe?)")
              }
-             cancer_type_TCGA_purities <- obj$TCGA_purities %>% subset(Cancer_type == cancer_type)
+             cancer_type_TCGA_purities <- .self$TCGA_purities %>% subset(Cancer_type == cancer_type)
              if(!is.null(filter_method)){
-               if(!(filter_method %in% colnames(obj$TCGA_purities))){
+               if(!(filter_method %in% colnames(.self$TCGA_purities))){
                  stop("Error: Purity estimation method not found (misspelled maybe?). Options are ESTIMATE,
                     ABSOLUTE, LUMP, IHC, CPE")
                }
