@@ -17,7 +17,7 @@ TCGAPurityFiltering=setRefClass("TCGAPurityFiltering",
 
              cancer_type_TCGA_purities <- .self$get_tissue_purities(cancer_type)
 
-             #for some reason the tcga tissue names are parsed with . instead of -
+             #for some reason the tcga barcodes are parsed with . instead of -
              colnames(assay) <- gsub(pattern = "\\.", replacement = "-",colnames(assay))
 
              not_in_assay <- rownames(cancer_type_TCGA_purities) %in% colnames(assay)
@@ -47,7 +47,7 @@ TCGAPurityFiltering=setRefClass("TCGAPurityFiltering",
                  stop("Error: Purity estimation method not found (misspelled maybe?). Options are ESTIMATE,
                     ABSOLUTE, LUMP, IHC, CPE")
                }
-               return(cancer_type_TCGA_purities %>% select(filter_method))
+               return(cancer_type_TCGA_purities %>% dplyr::select(filter_method))
              }
              else{
                return(cancer_type_TCGA_purities)
